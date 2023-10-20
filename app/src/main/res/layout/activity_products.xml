@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".Factura">
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:id="@+id/linearLayout3"
@@ -48,7 +47,7 @@
     </LinearLayout>
 
     <ImageView
-        android:id="@+id/imageView8"
+        android:id="@+id/imgproduct"
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:layout_marginStart="24dp"
@@ -77,45 +76,23 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
         android:text="Precio:"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/imageView8"
-        tools:layout_editor_absoluteY="141dp" />
+        app:layout_constraintStart_toEndOf="@+id/imgproduct"
+        app:layout_constraintTop_toBottomOf="@+id/productname" />
 
     <TextView
-        android:id="@+id/brand"
-        android:layout_width="wrap_content"
+        android:id="@+id/dollar"
+        android:layout_width="16dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:text="Marca:"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:text="$"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/imageView8"
-        app:layout_constraintTop_toBottomOf="@+id/dollar" />
-
-    <TextView
-        android:id="@+id/year"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="80dp"
-        android:text="Año:"
-        android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/imageView8"
-        app:layout_constraintTop_toBottomOf="@+id/dollar" />
-
-    <TextView
-        android:id="@+id/description"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
-        android:text="Descripción:"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView8" />
+        app:layout_constraintStart_toEndOf="@+id/imgproduct"
+        app:layout_constraintTop_toBottomOf="@+id/price" />
 
     <TextView
         android:id="@+id/pricetext"
@@ -128,17 +105,62 @@
         app:layout_constraintTop_toBottomOf="@+id/price" />
 
     <TextView
+        android:id="@+id/brand"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Marca:"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/imgproduct"
+        app:layout_constraintTop_toBottomOf="@+id/dollar" />
+
+    <TextView
         android:id="@+id/brandtext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:text="-"
-        app:layout_constraintStart_toEndOf="@+id/imageView8"
+        app:layout_constraintStart_toEndOf="@+id/imgproduct"
         app:layout_constraintTop_toBottomOf="@+id/brand" />
 
     <TextView
-        android:id="@+id/brandtext3"
+        android:id="@+id/year"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="80dp"
+        android:text="Año:"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/imgproduct"
+        app:layout_constraintTop_toBottomOf="@+id/dollar" />
+
+    <TextView
+        android:id="@+id/yeartext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="-"
+        app:layout_constraintStart_toEndOf="@+id/imgproduct"
+        app:layout_constraintTop_toBottomOf="@+id/year" />
+
+    <TextView
+        android:id="@+id/description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:text="Descripción:"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgproduct" />
+
+    <TextView
+        android:id="@+id/infoproduct"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="48dp"
@@ -150,73 +172,55 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/description" />
 
-    <TextView
-        android:id="@+id/yeartext"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:text="-"
-        app:layout_constraintStart_toEndOf="@+id/imageView8"
-        app:layout_constraintTop_toBottomOf="@+id/year" />
-
-    <TextView
-        android:id="@+id/dollar"
-        android:layout_width="16dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:gravity="center"
-        android:text="$"
-        android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/imageView8"
-        app:layout_constraintTop_toBottomOf="@+id/price" />
-
-    <Button
-        android:id="@+id/addcartbutton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
-        android:text="Agregar al carrito"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/linearLayout5"
-        app:layout_constraintTop_toBottomOf="@+id/brandtext3"
-        app:layout_constraintVertical_bias="1.0" />
-
     <LinearLayout
-        android:id="@+id/linearLayout5"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_marginBottom="32dp"
+        android:layout_width="0dp"
+        android:layout_height="80dp"
         android:gravity="center"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/addcartbutton"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/brandtext3"
-        app:layout_constraintVertical_bias="1.0">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
-        <ImageView
-            android:id="@+id/lessbutton"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_weight="1"
-            app:srcCompat="@android:drawable/ic_menu_close_clear_cancel" />
-
-        <TextView
-            android:id="@+id/amounttext"
-            android:layout_width="40dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
+        <LinearLayout
+            android:id="@+id/linearLayout5"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
             android:gravity="center"
-            android:text="0" />
+            android:orientation="horizontal"
+            app:layout_constraintHorizontal_bias="0.5">
 
-        <ImageView
-            android:id="@+id/addbutton"
+            <ImageView
+                android:id="@+id/lessbutton"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                app:srcCompat="@android:drawable/ic_menu_close_clear_cancel" />
+
+            <TextView
+                android:id="@+id/amounttext"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="0" />
+
+            <ImageView
+                android:id="@+id/addbutton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@android:drawable/ic_menu_add" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/addcartbutton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@android:drawable/ic_menu_add" />
+            android:gravity="center"
+            android:text="Agregar al carrito"
+            app:layout_constraintHorizontal_bias="0.5" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
