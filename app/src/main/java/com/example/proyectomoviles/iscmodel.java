@@ -4,24 +4,16 @@ public class iscmodel {
     String url;
     String name;
     String description;
-    String price;
+    Double price;
     String type;
-    String ganancia;
+    Double ganancia;
 
-    public iscmodel(String url, String name, String description, String price, String type, String ganancia) {
+    public iscmodel(String url, String name, String description, Double price, String type, Double ganancia) {
         this.url = url;
         this.name = name;
         this.description = description;
         this.price = price;
         this.type = type;
-        this.ganancia = ganancia;
-    }
-
-    public String getGanancia() {
-        return ganancia;
-    }
-
-    public void setGanancia(String ganancia) {
         this.ganancia = ganancia;
     }
 
@@ -49,11 +41,11 @@ public class iscmodel {
         this.description = description;
     }
 
-    public String getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 
@@ -63,5 +55,13 @@ public class iscmodel {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public Double getGanancia() {
+        return ganancia;
+    }
+
+    public void setGanancia(Double ganancia) {
+        this.ganancia = ganancia;
     }
 }

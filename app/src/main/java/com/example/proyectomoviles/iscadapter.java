@@ -33,12 +33,15 @@ public class iscadapter extends RecyclerView.Adapter<iscadapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         iscmodel iscModel = iscModelList.get(position);
-        Glide.with(context).load(iscModelList.get(position).getUrl().into(holder.imageView);
-        holder.name.setText(iscModelList.get(position).getName());
-        holder.des.setText(iscModelList.get(position).getDescription());
-        holder.price.setText(iscModelList.get(position).getPrice());
-        // Aquí debes establecer los datos en tus vistas (ImageView, TextViews).
 
+        // Utiliza Glide para cargar la imagen desde la URL en el ImageView
+        Glide.with(context).load(iscModel.getUrl()).into(holder.imageView);
+
+        // Establece el nombre, descripción y precio en los TextViews
+        holder.name.setText(iscModel.getName());
+        holder.des.setText(iscModel.getDescription());
+        // El precio es de tipo Double, debes convertirlo a String para mostrarlo en un TextView.
+        holder.price.setText(String.valueOf(iscModel.getPrice()));
     }
 
     @Override

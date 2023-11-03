@@ -14,7 +14,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
@@ -23,23 +22,21 @@ public class Registration extends AppCompatActivity {
     EditText reginame, regiemail, regipass;
     Button registerbtn;
     TextView gotosign;
-    TextInputLayout registeremail, registernae, registerpassword;
     FirebaseAuth auth;
     FirebaseDatabase database;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_registration); // Corregido el nombre del layout
+        setContentView(R.layout.activity_register);
 
         reginame = findViewById(R.id.regname);
         regiemail = findViewById(R.id.regemail);
         regipass = findViewById(R.id.regpass);
         registerbtn = findViewById(R.id.signupbtn);
-        gotosign = findViewById(R.id.gotosignin);
+        //gotosign = findViewById(R.id.gotosignin);
 
-        auth = FirebaseAuth.getInstance(); // Corregido el método getInstance()
+        auth = FirebaseAuth.getInstance();
         database = FirebaseDatabase.getInstance();
 
         gotosign.setOnClickListener(new View.OnClickListener() {
@@ -60,7 +57,7 @@ public class Registration extends AppCompatActivity {
     private void createUser() {
         String username = reginame.getText().toString();
         String useremail = regiemail.getText().toString();
-        String userpassword = regipass.getText().toString(); // Corregido el nombre de la variable
+        String userpassword = regipass.getText().toString();
 
         if (TextUtils.isEmpty(username)) {
             Toast.makeText(this, "Nombre está vacío", Toast.LENGTH_SHORT).show();
@@ -76,21 +73,21 @@ public class Registration extends AppCompatActivity {
             Toast.makeText(this, "Contraseña está vacía", Toast.LENGTH_SHORT).show();
             return;
         }
-    auth.createUserWithEmailAndPassword(useremail,userpassword).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-     @Override
-     public void onComplete(@NonNull Task<AuthResult> task) {
-         if(task.isSuccessful()){
-            Usermodel usermodel = new Usermodel(username,useremail,userpassword);
-            String id = task.getResult().getUser().getUid();
-            database.getReference().child("Users").child(id).setValue(usermodel);
-         Toast.makeText(Registration.this, "Registration Succesfull", Toast.LENGTH_SHORT).show();
-         startActivity(new Intent(Registration.this, Login.class));
-         finish();
 
-         }else{
-             Toast.makeText(Registration.this,"Fallo",Toast.LENGTH_SHORT).show();
-         }
-         }
-                // Aquí puedes continuar con la lógica para registrar al usuario en Firebase
-        }
+        auth.createUserWithEmailAndPassword(useremail, userpassword).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if (task.isSuccessful()) {
+                    Usermodel usermodel = new Usermodel(username, useremail, userpassword);
+                    String id = task.getResult().getUser().getUid();
+                    database.getReference().child("Users").child(id).setValue(usermodel);
+                    Toast.makeText(Registration.this, "Registro exitoso", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(Registration.this, Login.class));
+                    finish();
+                } else {
+                    Toast.makeText(Registration.this, "Fallo en el registro", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+    }
 }

@@ -1,7 +1,5 @@
 package com.example.proyectomoviles;
 
-import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
-
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -22,9 +20,10 @@ import java.util.List;
 
 public class HomeFragment extends Fragment {
     private FirebaseFirestore firestore;
-    private RecyclerView iscRecyclerView;
-    private List<iscmodel> iscModelList;
-    private IscAdapter iscAdapter;
+    private RecyclerView Iscrecycle;
+
+    private List<iscmodel> iscmodelList;
+    private iscadapter iscAdapter;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -34,19 +33,19 @@ public class HomeFragment extends Fragment {
         firestore = FirebaseFirestore.getInstance();
 
         // Obtener una referencia al RecyclerView desde el diseño
-        //iscRecyclerView = root.findViewById(R.id.isc);
+        Iscrecycle = root.findViewById(R.id.iscrrec);
 
-        // Configurar el administrador de diseño para el RecyclerView (horizontal en este caso)
-        iscRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.HORIZONTAL, false));
+        // Configurar el administrador de diseño para el RecyclerView (vertical en este caso)
+        Iscrecycle.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         // Inicializar la lista de modelos
-        iscModelList = new ArrayList<>();
+        iscmodelList = new ArrayList<>();
 
         // Inicializar el adaptador del RecyclerView
-        iscAdapter = new IscAdapter(getActivity(), iscModelList);
+        iscAdapter = new iscadapter(getActivity(), iscmodelList);
 
         // Establecer el adaptador en el RecyclerView
-        iscRecyclerView.setAdapter(iscAdapter);
+        Iscrecycle.setAdapter(iscAdapter);
 
         // Consultar la colección "Iscbook" en Firestore
         firestore.collection("Iscbook").get().addOnCompleteListener(task -> {
@@ -54,18 +53,20 @@ public class HomeFragment extends Fragment {
                 for (QueryDocumentSnapshot document : task.getResult()) {
                     // Obtener datos de Firestore y crear un objeto IscModel
                     iscmodel iscModel = new iscmodel(
+
+                            document.getString("imageUrl"),
                             document.getString("name"),
                             document.getString("description"),
                             document.getDouble("price"),
-                            document.getString("imageUrl"),
-                            document.getDouble("gananciaTotal");
+                            document.getString("type"),
+                            document.getDouble("gananciaTotal")
                     );
-                    iscModelList.add(iscmodel);
+                    iscmodelList.add(iscModel);
                 }
                 // Notificar al adaptador que los datos han cambiado
                 iscAdapter.notifyDataSetChanged();
             } else {
-                Log.w(TAG, "Error getting documents", task.getException());
+                Log.e("FirestoreError", "Error al obtener documentos", task.getException());
             }
         });
 
