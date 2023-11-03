@@ -14,11 +14,11 @@ import com.bumptech.glide.Glide;
 import com.example.proyectomoviles.iscmodel;
 import java.util.List;
 
-public class IscAdapter extends RecyclerView.Adapter<IscAdapter.ViewHolder> {
+public class iscadapter extends RecyclerView.Adapter<iscadapter.ViewHolder> {
     private Context context;
     private List<iscmodel> iscModelList;
 
-    public IscAdapter(Context context, List<iscmodel> iscModelList) {
+    public iscadapter   (Context context, List<iscmodel> iscModelList) {
         this.context = context;
         this.iscModelList = iscModelList;
     }
