@@ -1,93 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF">
+    tools:context=".LoginActivity">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:orientation="horizontal"
-        android:background="#FF0000"
-        android:gravity="center">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="EL RANCHO"
-            android:textColor="#FFFFFF"
-            android:textSize="24sp"
-            android:textStyle="bold"/>
-    </LinearLayout>
-
+    <!-- layout/activity_login.xml -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:gravity="center"
         android:padding="16dp">
 
-        <ImageView
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:src="@drawable/logorancho"
-            android:scaleType="centerCrop"/>
-
-        <EditText
-            android:id="@+id/logmail"
+        <TextView
+            android:id="@+id/apptitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Correo Electrónico"
-            android:backgroundTint="@android:color/holo_red_light"
-            android:padding="10dp"
-            android:layout_marginTop="20dp"/>
+            android:gravity="center"
+            android:text="Rancho y Licores"
+            android:textColor="#F44336"
+            android:textSize="32sp"
+            android:textStyle="bold" />
 
-        <EditText
-            android:id="@+id/logpassword"
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/animationView"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:layout_gravity="center"
+            android:layout_margin="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/splashactivity" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Contraseña"
-            android:backgroundTint="@android:color/holo_red_light"
-            android:inputType="textPassword"
-            android:padding="10dp"
-            android:layout_marginTop="10dp"/>
+            android:layout_marginTop="32dp"
+            app:hintEnabled="true"
+            app:endIconMode="clear_text">
 
-        <CheckBox
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Guardar Contraseña"
-            android:layout_marginTop="10dp"/>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Gmail"
+                android:inputType="textEmailAddress" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <Button
-            android:id="@+id/loginbtn"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Ingresar"
-            android:background="#FF0000"
-            android:textColor="#FFFFFF"
-            android:layout_marginTop="20dp"/>
+            android:layout_marginTop="16dp"
+            app:passwordToggleEnabled="true">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Contraseña"
+                android:inputType="textPassword" />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <Button
-            android:layout_width="wrap_content"
+            android:id="@+id/buttonLogin"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="¿Olvidó su Contraseña?"
-            android:background="#FF0000"
-            android:textColor="#FFFFFF"
-            android:layout_marginTop="10dp"/>
+            android:layout_marginTop="24dp"
+            android:text="Iniciar sesión" />
 
-        <Button
-            android:id="@+id/gotoregister"
-            android:layout_width="wrap_content"
+        <TextView
+            android:id="@+id/registertext"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Registrarse"
-            android:background="#FF0000"
-            android:textColor="#FFFFFF"
-            android:layout_marginTop="10dp"/>
+            android:layout_margin="15dp"
+            android:gravity="center"
+            android:text="Registrarte"
+            android:textSize="18sp" />
 
     </LinearLayout>
-</RelativeLayout>
 
 
+</androidx.constraintlayout.widget.ConstraintLayout>
